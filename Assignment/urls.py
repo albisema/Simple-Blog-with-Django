@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^blog/', include(blog_urls, namespace='blog')),
     url(r'^$', RedirectView.as_view(url='/blog/'), name='home'),
 
+
     url(r'^accounts/login/$', auth_views.login, {'template_name' : 'accounts/login.html'}, name='login'),
     url(r'^accounts/logout/$', auth_views.logout, {'template_name' : 'accounts/logout.html'}, name='logout'),
 ]

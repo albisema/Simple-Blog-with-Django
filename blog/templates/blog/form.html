@@ -1,10 +1,15 @@
 {% extends "base.html" %}
-{% load material_form %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-    <form method="post" action="">
+ <div class="row">
+     <div class="col-xs-6 col-xs-offset-3 jumbotron">
+    <h3>Create a Blog Post</h3>
+    <form method="POST" >
         {% csrf_token %}
-        {% form form=form %}{% endform %}
-        <input type="submit" class="btn" value="Submit" />
+        {{ form|crispy }}
+        <button type="submit" name="_submit" class="btn btn-primary">Submit</button>
     </form>
+     </div>
+ </div>
 {% endblock %}

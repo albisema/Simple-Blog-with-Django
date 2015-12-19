@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect, redirect
 from .forms import AddBlogPostForm
 from .models import BlogPost
 from django.contrib.auth.decorators import login_required
@@ -22,8 +22,15 @@ def blogForm(request):
     return render(request, 'blog/form.html', context)
 
 def viewPosts(request):
-    list = BlogPost.objects.all()
+    list = BlogPost.objects.order_by('-timestamp')
     context = {
         'list': list
     }
     return render(request, 'blog/posts.html', context)
+
+@login_required
+def delete_item(request, id):
+    instance = BlogPost.objects.get(pk=id)
+    if (request.user == instance.user):
+        instance.delete()
+    return redirect('/blog/posts/')

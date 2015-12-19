@@ -1,10 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div id="id_list_table">
+    <div  id="id_list_table">
+
         {% for item in list %}
-        <div class="title"> {{ item.title }} <span>from {{ item.user }} at {{ item.timestamp }}</span> </div>
-        <div class="title"> {{ item.description }} </div>
-        {% endfor %}
+
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                      {% if item.user == request.user %}
+                        <a class="btn btn-danger pull-right" href="{% url 'blog:delete' item.id %}"> Delete</a>
+                      {% endif %}
+                    <h3 class="panel-title">{{ item.title }} </h3>
+                    <span class="info">from {{ item.user }} at {{ item.timestamp }}</span>
+                  </div>
+                  <div class="panel-body">
+                    {{ item.description }}
+                  </div>
+                </div>
+         {% endfor %}
+
     </div>
 {% endblock %}

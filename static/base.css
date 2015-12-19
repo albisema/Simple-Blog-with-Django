@@ -9,3 +9,8 @@ body {
 .errorlist{
     color: red;
 }
+
+span.info {
+    font-style: italic;
+    font-size: 12px;
+}

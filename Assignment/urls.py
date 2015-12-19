@@ -17,8 +17,14 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from blog import urls as blog_urls
+from django.views.generic.base import RedirectView
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', include(blog_urls, namespace='blog')),
+    url(r'^blog/', include(blog_urls, namespace='blog')),
+    url(r'^$', RedirectView.as_view(url='/blog/'), name='home'),
+
+    url(r'^accounts/login/$', auth_views.login, {'template_name' : 'accounts/login.html'}, name='login'),
+    url(r'^accounts/logout/$', auth_views.logout, {'template_name' : 'accounts/logout.html'}, name='logout'),
 ]

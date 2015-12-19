@@ -1,6 +1,7 @@
 from django.conf.urls import url
-from .views import blogForm
+from . import views
 
 urlpatterns = [
-    url(r'^$', blogForm, name='form'),
+    url(r'^$', views.blogForm, name='form'),
+    url(r'^posts/', views.viewPosts, name='posts'),
 ]

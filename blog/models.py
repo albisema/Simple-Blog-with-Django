@@ -4,7 +4,7 @@ import datetime
 
 class BlogPost (models.Model):
     title = models.CharField(max_length=120, blank=True, null=True)
-    description = models.TextField(null=False, blank=False)
+    description = models.TextField(blank=False)
     timestamp = models.DateTimeField('Time', default=datetime.datetime.now)
     user = models.ForeignKey(User)
 

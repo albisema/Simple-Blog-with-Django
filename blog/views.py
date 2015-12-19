@@ -6,7 +6,7 @@ def blogForm(request):
 
     if form.is_valid():
         instance = form.save(commit=False)
-        if instance.title is None:
+        if not instance.title :
             instance.title = 'Untitled Post'
         instance.user = request.user
         instance.save()

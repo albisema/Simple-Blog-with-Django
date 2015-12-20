@@ -5,19 +5,30 @@
 
         {% for item in list %}
 
-                <div class="panel panel-info">
-                  <div class="panel-heading">
-                      {% if item.user == request.user %}
-                        <a class="btn btn-danger pull-right" href="{% url 'blog:delete' item.id %}"> Delete</a>
-                      {% endif %}
-                    <h3 class="panel-title">{{ item.title }} </h3>
+            <div class="demo-card-wide mdl-card mdl-shadow--2dp " >
+              <div class="mdl-card__title">
+                  <h2 class="panel-title mdl-card__title-text">{{ item.title }} </h2>
+              </div>
+              <div class="mdl-card__supporting-text">
+                {{ item.description }}
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                     <span class="info">from {{ item.user }} at {{ item.timestamp }}</span>
-                  </div>
-                  <div class="panel-body">
-                    {{ item.description }}
-                  </div>
-                </div>
+                </a>
+              </div>
+              <div class="mdl-card__menu">
+                  {% if item.user == request.user %}
+                    <a href="{% url 'blog:delete' item.id %}" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons" > delete </i>
+                    </a>
+                  {% endif %}
+              </div>
+            </div>
+        <br>
          {% endfor %}
+
+
 
     </div>
 {% endblock %}

@@ -21,7 +21,7 @@ from django.views.generic.base import RedirectView
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls, name='admin'),
     url(r'^blog/', include(blog_urls, namespace='blog')),
     url(r'^$', RedirectView.as_view(url='/blog/'), name='home'),
 

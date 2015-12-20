@@ -27,8 +27,14 @@
             </div>
         <br>
          {% endfor %}
-
-
-
     </div>
+
+{% endblock %}
+
+{% block fab %}
+    <a href="{% url 'blog:form' %}">
+    <button id="fab" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+      <i class="material-icons">mode_edit</i>
+    </button>
+        </a>
 {% endblock %}
